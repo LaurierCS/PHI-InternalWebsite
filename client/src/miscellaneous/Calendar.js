@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Scheduler from './components/Scheduler';
-import Toolbar from './components/Toolbar';
+import Scheduler from '../components/Scheduler';
+import Toolbar from '../components/Toolbar';
 import './Calendar.css';
 
 const data = [

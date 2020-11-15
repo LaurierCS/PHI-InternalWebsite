@@ -8,11 +8,11 @@ const PORT = process.env.PORT || 8080;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_phi', {
     useCreateIndex:true,
-        useUnifiedTopology:true,
-        useNewUrlParser:true
+    useUnifiedTopology:true,
+    useNewUrlParser:true
     }).then( () => {
-          console.log("Connected To Mongo Db DataBase");
-      }).catch((err) => {
+        console.log("Connected To Mongo Db DataBase");
+    }).catch((err) => {
         console.log("DataBase Connection Error " + err);
 });
 

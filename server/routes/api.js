@@ -18,11 +18,4 @@ router.get('/', (req, res) => {
 router.post('/save', (req, res) => {
 });
 
-
-router.get('/', (req, res) => {
-
-});
-
-
-
 module.exports = router;

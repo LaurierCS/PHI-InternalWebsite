@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_phi', {
+mongoose.connect(process.env.REACT_APP_MONGODB_URI || 'mongodb://localhost:27017/PhiInternal', {
     useCreateIndex:true,
     useUnifiedTopology:true,
     useNewUrlParser:true
@@ -16,18 +16,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_phi', {
         console.log("DataBase Connection Error " + err);
 });
 
-// mongoose.connection.on('connected', () => {
-//     console.log('Mongoose has been successfully connected');
-// });
-
 // Data parsing
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-
-
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static('client/build'));
-// }
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 
 // HTTP request logger

@@ -10,6 +10,7 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 
 function App() {
+  //Set up the routes and configure the app
   return (
     <Container
       className="d-flex align-items-center justify-content-center"

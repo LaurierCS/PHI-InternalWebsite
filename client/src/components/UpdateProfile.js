@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function UpdateProfile() {
+  //Set up values and states
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -12,6 +13,9 @@ export default function UpdateProfile() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
+  //Handle update user profile
+  //Right now the only thing that can be updated is the email
+  //In the future we will add more features to the user that they can update later
   function handleSubmit(e) {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {

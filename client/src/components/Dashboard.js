@@ -4,10 +4,12 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Dashboard() {
+  //Set up values and states
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
 
+  //Allow user to logout
   async function handleLogout() {
     setError("")
 
@@ -19,6 +21,8 @@ export default function Dashboard() {
     }
   }
 
+  //Right now the Dashboard only has the update profile section
+  //We will add more features and components to it
   return (
     <>
       <Card>

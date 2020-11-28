@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Signup() {
+  //Set values and states
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -12,9 +13,11 @@ export default function Signup() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
+  //Handle user signing in
   async function handleSubmit(e) {
     e.preventDefault()
 
+    //If conformication password don't match, stop the rest of the process
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
     }
@@ -22,6 +25,7 @@ export default function Signup() {
     try {
       setError("")
       setLoading(true)
+      //Load the signup method from the auth provider
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/")
     } catch {
@@ -31,6 +35,7 @@ export default function Signup() {
     setLoading(false)
   }
 
+  //UI for the sign up page
   return (
     <>
       <Card>

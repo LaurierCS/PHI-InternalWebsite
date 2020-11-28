@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Login() {
+  //Set values and states
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -11,12 +12,14 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
+  //Handle the user logging in
   async function handleSubmit(e) {
     e.preventDefault()
 
     try {
       setError("")
       setLoading(true)
+      //Load the function for login from the auth provider
       await login(emailRef.current.value, passwordRef.current.value)
       history.push("/")
     } catch {
@@ -26,6 +29,7 @@ export default function Login() {
     setLoading(false)
   }
 
+  //Set the UI for the login form
   return (
     <>
       <Card>

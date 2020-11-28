@@ -4,12 +4,14 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
 
 export default function ForgotPassword() {
+  //Set values and states
   const emailRef = useRef()
   const { resetPassword } = useAuth()
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
 
+  //When the user clicks Forgot Password, handle the submit feature
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -17,6 +19,7 @@ export default function ForgotPassword() {
       setMessage("")
       setError("")
       setLoading(true)
+      //Load the resetPassword method from the auth provider
       await resetPassword(emailRef.current.value)
       setMessage("Check your inbox for further instructions")
     } catch {
@@ -26,6 +29,7 @@ export default function ForgotPassword() {
     setLoading(false)
   }
 
+  //UI for the forgot password page
   return (
     <>
       <Card>

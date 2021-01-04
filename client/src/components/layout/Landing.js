@@ -14,8 +14,8 @@ class Landing extends Component {
           <div className="col s12 center-align">
             <h4>
               <b>Phi</b> internal platform{" "}
-              <span style={{ fontFamily: "monospace" }}>ALOWWING</span> art to
-              thrive
+              <span style={{ fontFamily: "monospace" }}>TO HELP</span> members
+              within the club
             </h4>
             <p className="flow-text grey-text text-darken-1">
               Used for members of WLU Phi

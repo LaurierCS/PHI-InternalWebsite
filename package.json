@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "lint": "eslint models/** routes/** validation/**"
+    "lint": "eslint models/** routes/** validation/** server.js"
   },
   "author": "WLU Phi",
   "license": "MIT",

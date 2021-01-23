@@ -94,7 +94,8 @@ const ResumeSchema = new Schema({
   paid_experience:[ExperienceSchema],
   volunteer_experience:[ExperienceSchema],
   projects:[ProjectSchema],
-  awards:[AwardSchema]
+  awards:[AwardSchema],
+  links:[{text: String, uri: String}]
 });
 
 // Create Schema

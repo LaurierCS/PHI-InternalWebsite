@@ -57,7 +57,7 @@ const ProjectSchema = new Schema({
   description:{
     type: String,
   },
-  links:[String]
+  links:[{text: String, uri: String}]
 });
 
 const AwardSchema = new Schema({

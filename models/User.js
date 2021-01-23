@@ -51,7 +51,7 @@ const ProjectSchema = new Schema({
     type: String,
     required: true,
   },
-  stack:{
+  tech_stack:{
     type: String,
   },
   description:{

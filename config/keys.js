@@ -1,5 +1,4 @@
 module.exports = {
-  mongoURI:
-    "mongodb+srv://AdminUser:Birthday@cluster0.7ydll.mongodb.net/backend?retryWrites=true&w=majority",
+  mongoURI: process.env.MONGO_DB_URI,
   secretOrKey: "secret",
 };

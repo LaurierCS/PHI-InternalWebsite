@@ -19,6 +19,7 @@
     "rules": {
         "indent": [ "off", 2 ],
         "quotes": [ "warn", "double" ],
-        "semi": [ "warn", "always" ]
+        "semi": [ "warn", "always" ],
+		"no-unused-vars": [ "warn", { "args": "none" } ]
 	}
 }

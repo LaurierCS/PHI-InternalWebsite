@@ -22,3 +22,33 @@ npm run dev
 ```
 
 You can also run the client and server individually with `npm run client` and `npm run server` respectively.
+
+
+## API
+
+### User
+Route: `/api/users/register`  
+Request Type: `POST`  
+Success: 200 status code  
+Create a new user given username, email, password in the request body.
+
+Route: `/api/users/login`  
+Request Type: `POST`  
+Success: 200 status code  
+Log in a user given username & password in the request body.
+
+### Jobs 
+Route: `/api/jobs/create`  
+Request Type: `POST`  
+Success: 200 status code  
+Create a new job document in the database. The request body must be a JSON job document.
+
+Route: `/api/jobs/delete/<job_id>`  
+Request Type: `POST`  
+Success: 200 status code  
+Delete the job with the given job_id
+
+Route: `/api/jobs/update/<job_id>`  
+Request Type: `POST`  
+Success: 200 status code  
+Update the job with the given job_id. The request body must be a JSON job document, including any fields to be updated.

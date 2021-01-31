@@ -25,18 +25,18 @@ router.post('/delete/:jobID', (req, res)=>{
 // @desc delete a job posting from db
 // @access Public
 router.post("/edit/:jobID", (req, res) => {
-	let id = req.params["jobID"];
-	let edited = JSON.parse(req.body);
+  let id = req.params["jobID"];
+  let edited = JSON.parse(req.body);
 
-	// TODO: verify that req.body matches Job schema
+  // TODO: verify that req.body matches Job schema
 
-	Jobs.findByIdAndUpdate({id}, edited, function(err, res) {
-		if(err){
-			res.send(err);
-		} else {
-			res.send(200);
-		}
-	});
+  Jobs.findByIdAndUpdate({id}, edited, function(err, res) {
+    if(err){
+      res.send(err);
+    } else {
+      res.send(200);
+    }
+  });
 
 });
 
@@ -44,16 +44,16 @@ router.post("/edit/:jobID", (req, res) => {
 // @desc delete a job posting from db
 // @access Public
 router.post("/create"), (req, res) => {
-	let id = req.params["jobID"];
-	let entry = JSON.parse(req.body);
-	
+  let id = req.params["jobID"];
+  let entry = JSON.parse(req.body);
+
   // TODO: verify that req.body matches Job schema
 
-	Jobs.create(entry, function(err, res) {
-		if(err){
-			res.send(err);
-		} else {
-			res.send(200);
-		}
-	});
+  Jobs.create(entry, function(err, res) {
+    if(err) {
+      res.send(err);
+    } else {
+      res.send(200);
+    }
+  });
 });

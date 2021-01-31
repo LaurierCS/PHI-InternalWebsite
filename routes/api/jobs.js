@@ -27,7 +27,7 @@ router.post("/delete/:jobID", (req, res)=>{
 // @access Public
 router.post("/update/:jobID", (req, res) => {
   let id = req.params["jobID"];
-  let edited = JSON.parse(req.body);
+  let edited = req.body;
 
   // TODO: verify that req.body matches Job schema
 
@@ -43,7 +43,7 @@ router.post("/update/:jobID", (req, res) => {
 // request.body should be the json for a Job document
 // @access Public
 router.post("/create", (req, res) => {
-  let entry = JSON.parse(req.body);
+  let entry = req.body;
 
   // TODO: verify that req.body matches Job schema
 

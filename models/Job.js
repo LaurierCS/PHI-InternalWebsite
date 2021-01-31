@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-require('mongoose-type-url');
+require("mongoose-type-url");
 const Schema = mongoose.Schema;
 
 const JobSchema = new Schema({
@@ -18,7 +18,7 @@ const JobSchema = new Schema({
     //optional include position type
     position: {
         type: String,
-        enum: ['Full-time', 'Internship', 'Part-time', 'Contractor'],
+        enum: ["Full-time", "Internship", "Part-time", "Contractor"],
     },
     jobDescript: String,
     jobReqs: String,
@@ -32,7 +32,7 @@ const JobSchema = new Schema({
         }
 }, 
 //adds createdAt and updatedAt properties
-{ timestamps: true });
+{ timestamps: true, collection: "jobs" });
 
-const Job = mongoose.model('Job', JobSchema);
-module.exports = Job
+const Job = mongoose.model("Job", JobSchema);
+module.exports = Job;

@@ -1,5 +1,6 @@
 # PHI Internal
 Home of the internal website of the Laurier Computer Science PHI Society.
+Made with <3 at Laurier!
 
 ## Getting Started
 

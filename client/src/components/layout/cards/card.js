@@ -1,62 +1,31 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
+import { makeStyles, Card, CardHeader, CardContent, CardActions, Collapse, IconButton, Typography} from '@material-ui/core';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-
-import {Inbox, Visibility, Delete, CheckCircle, Edit} from "@material-ui/icons";
+import {Inbox, Visibility, Delete, CheckCircle, Edit, ExpandMore, RemoveCircle} from "@material-ui/icons";
 import {Button} from "@material-ui/core";
+import './card.css'
 
 //** Requires Material-UI **
 //** under construction **
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 400,
-        borderRadius: 20,
-        boxShadow: "5px 5px 3px",
-    },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-
-    publish: {
-        backgroundColor: "green",
-
-    },
-
-}));
-
 function JobPostingCard() {
-    const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-    const [published, setPublish] = React.useState(false);
+    const [expanded, setExpanded] = React.useState(false); // default state is collapsed (not expanded)
+    const [published, setPublish] = React.useState(false); // default state is unpublished
 
+    // supposed to handle the publish button toggle (not working rn)
     const handlePublishingClick = () => {
         setPublish(!published);
     };
 
+    // handles the card expanding
+    // TODO: expand button is not rotating when clicked
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
     return (
-        <Card className={classes.root}>
+        <Card class="MuiCard-root">
             <CardHeader
 
                 action={
@@ -68,16 +37,17 @@ function JobPostingCard() {
                 subheader="Deadline: 02/07/2021"
             />
             <CardContent>
+
                 <Button>
                     12 Applications
                 </Button>
             </CardContent>
             <CardActions disableSpacing>
 
-                <ToggleButton
-                    className={clsx(classes.publish, {
+                <ToggleButton // Publish button
+                    /*className={clsx(classes.publish, {
                         [classes.publish]: published,
-                    })}
+                    })}*/
                     value="unpublished"
                     aria-label="publishing"
                     title={"Unpublished"}
@@ -95,17 +65,16 @@ function JobPostingCard() {
                 <IconButton aria-label={"Delete"} title={"Delete Posting"}>
                     <Delete/>
                 </IconButton>
-
-
-                <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
+                <IconButton // expand button
+                    className={clsx(
+                        class{"MuiCard-expand"}, {
+                        [class{"MuiCard-expandOpen"}]: expanded,
                     })}
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon />
+                    <ExpandMore />
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>

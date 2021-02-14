@@ -47,15 +47,15 @@ function JobPostingCard() {
                 <ToggleButton // Publish button
                     /*className={clsx(classes.publish, {
                         [classes.publish]: published,
-                    })}*/
+                    })}
                     value="unpublished"
                     aria-label="publishing"
                     title={"Unpublished"}
                     onClick={handlePublishingClick}
+                    */
                     >
-                    <RemoveCircle />
+                     <RemoveCircle />
                 </ToggleButton>
-
                 <IconButton aria-label="Inbox" title={"View Applications"}>
                     <Inbox />
                 </IconButton>

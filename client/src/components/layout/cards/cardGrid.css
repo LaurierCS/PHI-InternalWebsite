@@ -1,0 +1,10 @@
+
+
+.MuiGrid-container{
+    justify-content: center;
+    margin: auto;
+}
+
+.MuiGrid-item {
+    padding: 10px;
+}

@@ -2,8 +2,9 @@
 .MuiCard-root {
     max-width: 400px;
     border-radius: 20px;
-    box-shadow: 3px 3px 3px;
-    background-color: lightgrey;
+    box-shadow: 2px 2px 2px;
+    background-color: whitesmoke;
+
 }
 
 .MuiCard-expand{
@@ -14,5 +15,11 @@
 
 .MuiCard-expandOpen{
     transform: rotate(180deg);
+}
+
+.MuiToggleButton-root {
+    border-radius: 30px;
+    padding: 1px;
+
 }
 

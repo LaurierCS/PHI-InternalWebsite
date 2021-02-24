@@ -67,7 +67,8 @@ router.post("/update/:jobID", (req, res) => {
       Jobs.findByIdAndUpdate({id}, { "published": false }, function(err, res) {
               if(err) res.send(err);
               else res.send(200);
-      })})});
+      });});});
+
 
 // endpoint to display all jobs
 
@@ -75,12 +76,30 @@ router.get("/api/jobs", (req, res) => {
   let x = [];
   for (let i = 0; i < 100; i++) {
       let jobs = ({
-          title,
-          requirements,
-          id,
-          date_created,
-          date_modified,
-          published,
+          title: {
+    type: String,
+    required: true,
+  },
+  requirements: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  last_modified: {
+    type: Date,
+    default: Date.now
+  },
+  published: {
+    type: Boolean,
+    required: true
+  }
       });
       x.push(jobs);
   }

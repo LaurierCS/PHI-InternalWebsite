@@ -67,11 +67,11 @@ router.post("/update/:jobID", (req, res) => {
       Jobs.findByIdAndUpdate({id}, { "published": false }, function(err, res) {
               if(err) res.send(err);
               else res.send(200);
-      })})})
+      })})});
 
 // endpoint to display all jobs
 
-app.get("/api/jobs", (req, res) => {
+router.get("/api/jobs", (req, res) => {
   let x = [];
   for (let i = 0; i < 100; i++) {
       let jobs = ({
@@ -85,4 +85,4 @@ app.get("/api/jobs", (req, res) => {
       x.push(jobs);
   }
   res.status(200).send(x);
-})
+});

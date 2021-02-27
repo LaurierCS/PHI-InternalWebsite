@@ -46,6 +46,14 @@ class Landing extends Component {
               >
                 Log In
               </Link>
+
+            </div>
+            <div>
+              <Link
+                  to={"/hiring"}
+              >
+                Temp Hiring Page button
+              </Link>
             </div>
           </div>
         </div>

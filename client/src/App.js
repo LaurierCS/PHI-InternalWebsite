@@ -15,8 +15,8 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 
 import "./App.css";
-//import JobPostingCard from "./components/layout/cards/card";
-import JobPostingGrid from "./components/layout/cards/cardGrid";
+
+import Hiring from "./components/layout/hiring-page/Hiring.js";
 
 
 // Check for token to keep user logged in
@@ -47,10 +47,10 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/hiring" component={Hiring}/>
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
-          <JobPostingGrid/>
         </div>
 
       </Router>

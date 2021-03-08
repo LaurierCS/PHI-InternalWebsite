@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const jobs = require("./routes/api/jobs");
+const jobs = require("./routes/api/hiring");
 
 const app = express();
 // Bodyparser middleware

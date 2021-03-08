@@ -17,7 +17,11 @@ To get the development version of the app up and running, you can do:
 
 ```
 npm install
-npm run client-install
+cd server 
+npm install
+cd ../client
+npm install
+cd ..
 npm run dev 
 ```
 

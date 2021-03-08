@@ -8,7 +8,7 @@
     "server": "npm start --prefix server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "lint": "eslint models/** routes/** validation/** server.js"
+    "lint": "eslint server/routes/** validation/** server/server.js"
   },
   "author": "WLU Phi",
   "license": "MIT",

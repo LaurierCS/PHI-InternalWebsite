@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "lint": "eslint models/** routes/** validation/** server.js"
+    "start": "nodemon server.js"
   },
   "author": "WLU Phi",
   "license": "MIT",

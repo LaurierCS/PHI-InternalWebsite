@@ -1,8 +1,28 @@
+const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 
 //const mongoose = require("mongoose");
 const Jobs = require("../../db-script/schemas/Job");
+
+// @route POST api/jobs/delete
+// @desc  create a new job posting in the db 
+//   request.body should be the json for a Job document
+// @access Public
+router.post("/create", (req, res) => {
+  //get job from body
+  let entry = req.body;
+
+  // TODO: verify that req.body matches Job schema
+
+  //creates job document with posted data
+  Jobs.create(entry, function (err, doc) {
+    //if query fails send status 500
+    if (err) res.status(500).send(err);
+    //on success return status 200
+    else res.status(200).send("OK");
+  });
+});
 
 // @route POST api/jobs/delete
 // @desc delete a job posting from db
@@ -12,10 +32,10 @@ router.post("/delete/:jobID", (req, res) => {
   let id = req.params["jobID"];
   //find and delete from db
   Jobs.findByIdAndDelete(id, (err, docs) => {
-    //if err, return status 500
-    if (err) res.status(500);
+    //if err, return status 500 and send error
+    if (err) res.status(500).send(err);
     //on successful completion, return status 200
-    else res.status(200);
+    else res.status(200).send("OK");
   });
 });
 
@@ -25,82 +45,88 @@ router.post("/delete/:jobID", (req, res) => {
 //   including the properties to update
 // @access Public
 router.post("/update/:jobID", (req, res) => {
+  //get job id and body from request
   let id = req.params["jobID"];
   let edited = req.body;
+  //updates last modified if not defined
+  if(edited.last_modified === undefined) edited.last_modified = Date.now()
 
   // TODO: verify that req.body matches Job schema
 
-  Jobs.findByIdAndUpdate({ id }, edited, function (err, res) {
-    if (err) res.send(err);
-    else res.send(200);
+  //query db to find the document and update with new job obj
+  Jobs.findByIdAndUpdate(id, edited, function (err, doc) {
+    //if query fails send status 500
+    if (err) res.status(500).send(err);
+    //on success return status 200
+    else res.status(200).send("OK");
   });
 });
 
-// @route POST api/jobs/delete
-// @desc  create a new job posting in the db \
-// request.body should be the json for a Job document
+// @route GET api/jobs/
+// @desc  gets all published jobs and returns array sorted by modified date.
 // @access Public
-router.post("/create", (req, res) => {
-  let entry = req.body;
-
-  // TODO: verify that req.body matches Job schema
-
-  Jobs.create(entry, function (err, res) {
-    if (err) res.send(err);
-    else res.status(200);
+router.get("/published", (req, res)=>{
+  //query db for published is true
+  Jobs.find({published: true}, null, (err, docs)=>{
+    //if query fails send status 500
+    if(err) res.status(500).json(err);
+    else{
+      //sort with custom function that compares the last_modified dates
+      docs.sort((a,b)=>{
+        return b.last_modified - a.last_modified
+      })
+      //on success return status 200 and the json array of the queried docs
+      res.status(200).json(docs);
+    }
   });
 });
 
-// endpoints to publish/unpublish a job
-
-router.post("/update/:jobID", (req, res) => {
+// @route POST api/jobs/publish/:jobID
+// @desc  publishes the posted job.
+// @access Public
+router.post("/publish/:jobID", (req, res) => {
+  //get id from params
   let id = req.params["jobID"];
-  Jobs.findByIdAndUpdate({ id }, { published: true }, function (err, res) {
-    if (err) res.send(err);
-    else res.send(200);
-  });
-
-  router.post("/update/:jobID", (req, res) => {
-    let id = req.params["jobID"];
-    Jobs.findByIdAndUpdate({ id }, { published: false }, function (err, res) {
-      if (err) res.send(err);
-      else res.send(200);
-    });
+  //queries db by id and updates published and last modified attributes
+  Jobs.findByIdAndUpdate(id, { published: true, last_modified: Date.now() }, function (err, doc) {
+    //if query fails send status 500
+    if (err) res.status(500).send(err);
+    //on success return status 200
+    else res.status(200).send("OK");
   });
 });
 
-// endpoint to display all jobs
-
-router.get("/api/jobs", (req, res) => {
-  let x = [];
-  for (let i = 0; i < 100; i++) {
-    let jobs = {
-      title: {
-        type: String,
-        required: true,
-      },
-      requirements: {
-        type: String,
-        required: true,
-      },
-      description: {
-        type: String,
-        required: true,
-      },
-      created: {
-        type: Date,
-        default: Date.now,
-      },
-      last_modified: {
-        type: Date,
-        default: Date.now,
-      },
-      published: {
-        type: Boolean,
-        required: true,
-      },
-    };
-    x.push(jobs);
-  }
-  res.status(200).send(x);
+// @route POST api/jobs/unpublish/:jobID
+// @desc  unpublishes the posted job.
+// @access Public
+router.post("/unpublish/:jobID", (req, res) => {
+  //get id from params
+  let id = req.params["jobID"];
+  //queries db by id and updates published and last modified attributes
+  Jobs.findByIdAndUpdate(id, { published: false, last_modified: Date.now() }, function (err, doc) {
+    //if query fails send status 500
+    if (err) res.status(500).send(err);
+    //on success return status 200
+    else res.status(200).send("OK");
+  });
 });
+
+// @route GET api/jobs/
+// @desc  gets all jobs and returns array sorted by modified date.
+// @access Public
+router.get("/", (req, res) => {
+  Jobs.find({}, null, (err, docs)=>{
+    //if query fails send status 500
+    if(err) res.status(500).json(err);
+    else{
+      //sort with custom function that compares the last_modified dates
+      docs.sort((a,b)=>{
+        return b.last_modified - a.last_modified
+      })
+      //on success return status 200 and the json array of the queried docs
+      res.status(200).json(docs);
+    }
+  })
+});
+
+module.exports = router

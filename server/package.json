@@ -1,0 +1,21 @@
+{
+  "name": "phiinternal-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "WLU Phi",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0",
+    "nodemon": "^2.0.6"
+  }
+}

@@ -2,7 +2,7 @@ const mongodb = require("mongodb");
 require("dotenv").config();
 const MongoClient = mongodb.MongoClient;
 // eslint-disable-next-line quotes
-const uri = `mongodb+srv://${process.env.mongodbUsername}:${process.env.mongodbPassword}@cluster0.cthkj.mongodb.net/${process.env.dbName}?retryWrites=true&w=majority`;
+const uri = process.env.TESTING_URI || `mongodb+srv://${process.env.mongodbUsername}:${process.env.mongodbPassword}@cluster0.cthkj.mongodb.net/${process.env.dbName}?retryWrites=true&w=majority`;
 const dbName = process.env.dbName || "phi-internal";
 
 var db = null;

@@ -7,7 +7,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import Layout from "./components/layout/layout"
+import Layout from "./components/layout/layout";
 import Navbar from "./components/layout/navbar/Navbar";
 import Landing from "./components/layout/landing-page/Landing";
 import Register from "./components/auth/Register";
@@ -18,8 +18,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 import "./App.css";
 
 import Hiring from "./components/layout/hiring-page/Hiring.js";
+import Postings from "./components/layout/postings-page/Postings";
 import JobPosting from "./components/layout/hiring-page/cards/JobPosting";
-
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -43,11 +43,13 @@ if (localStorage.jwtToken) {
 
 function withLayout(WrappedComponent) {
   // ...and returns another component...
-  return class extends React.Component {  
+  return class extends React.Component {
     render() {
-      return <Layout>
-        <WrappedComponent></WrappedComponent>
-      </Layout>
+      return (
+        <Layout>
+          <WrappedComponent></WrappedComponent>
+        </Layout>
+      );
     }
   };
 }
@@ -57,16 +59,16 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className="App">
-            <Route exact path="/" component={withLayout(Landing)} />
-            <Route exact path="/register" component={withLayout(Register)} />
-            <Route exact path="/login" component={withLayout(Login)} />
-            <Route exact path="/hiring" component={withLayout(Hiring)}/>
-            <Route exact path="/addjob" component={withLayout(JobPosting)}/>
+          <Route exact path="/" component={withLayout(Landing)} />
+          <Route exact path="/register" component={withLayout(Register)} />
+          <Route exact path="/login" component={withLayout(Login)} />
+          <Route exact path="/hiring" component={withLayout(Hiring)} />
+          <Route exact path="/addjob" component={withLayout(JobPosting)} />
+          <Route exact path="/postings" component={withLayout(Postings)} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
-
       </Router>
     </Provider>
   );

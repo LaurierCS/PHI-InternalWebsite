@@ -1,0 +1,21 @@
+.MuiCard-root {
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px;
+  background-color: whitesmoke;
+}
+
+.MuiCard-expand {
+  transform: rotate(0deg);
+  margin-left: auto;
+  transition-duration: 1s;
+}
+
+.MuiCard-expandOpen {
+  transform: rotate(180deg);
+}
+
+.MuiToggleButton-root {
+  border-radius: 30px;
+  padding: 1px;
+}

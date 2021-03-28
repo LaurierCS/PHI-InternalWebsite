@@ -17,7 +17,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import "./App.css";
 
 import Hiring from "./components/layout/hiring-page/Hiring.js";
-
+import Postings from "./components/layout/postings-page/Postings";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -48,6 +48,7 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/hiring" component={Hiring}/>
+          <Route exact path="/postings" component={Postings}/>
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>

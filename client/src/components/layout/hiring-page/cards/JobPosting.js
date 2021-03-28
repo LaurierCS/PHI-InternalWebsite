@@ -8,6 +8,7 @@ const JobPosting = () => {
   return (
     <div>
       <div className="posting">
+        <br></br>
         <div class="card text-black bg-light mb-3" style={{ width: "40rem" }}>
           <div class="card-body">
             <h1 class="card-title center-align"> Create Job Posting</h1>
@@ -74,6 +75,7 @@ const JobPosting = () => {
             </div>
             
           </div>
+          <br></br>
         </div>
       </div>
     </div>

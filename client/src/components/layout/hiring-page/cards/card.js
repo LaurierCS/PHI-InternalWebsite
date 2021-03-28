@@ -24,7 +24,7 @@ function JobPostingCard (props){
                     <CardHeader
 
                         action={
-                            <IconButton aria-label="Edit" title={"Edit Posting"}>
+                            <IconButton href={"/addjob"} aria-label="Edit" title={"Edit Posting"}>
                                 <Edit/>
                             </IconButton>
                         }

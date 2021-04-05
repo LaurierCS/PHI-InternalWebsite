@@ -6,8 +6,8 @@ const ObjectId = require("mongodb").ObjectID
 
 function validate(entry){
   entry.last_modified = Date.now()
-  entry.created = Date.now()
 
+  if(!entry.created) entry.created = Date.now()
   if(!entry.published) entry.published = false;
 
   //TODO: Complete Method
@@ -15,20 +15,6 @@ function validate(entry){
 
   return valid
 }
-// // @route POST api/jobs/delete
-// // @desc delete a job posting from db
-// // @access Public
-// router.post("/delete/:jobID", (req, res) => {
-//   //get id from params
-//   let id = req.params["jobID"];
-//   //find and delete from db
-//   Jobs.findByIdAndDelete(id, (err, docs) => {
-//     //if err, return status 500
-//     if (err) res.status(500);
-//     //on successful completion, return status 200
-//     else res.status(200);
-//   });
-// });
 
 // // @route POST api/jobs/delete
 // // @desc delete a job posting from db
@@ -63,6 +49,8 @@ router.post("/create", (req,res)=>{
       //catch then send error to client
       res.status(500).send(err);
     })
+  } else {
+    res.status(400).send("BAD REQUEST")
   }
 });
 
@@ -86,6 +74,8 @@ router.post("/update/:jobID", (req, res)=>{
       //catch then send err to client
       res.status(500).send(err);
     })
+  } else {
+    res.status(400).send("BAD REQUEST")
   }
 });
 
@@ -117,7 +107,6 @@ router.post("/publish/:jobID", (req, res)=>{
   
   updateObj = {
     last_modified: Date.now(),
-    created: Date.now(),
     published: true
   }
 
@@ -138,7 +127,6 @@ router.post("/unpublish/:jobID", (req, res)=>{
   
   updateObj = {
     last_modified: Date.now(),
-    created: Date.now(),
     published: false
   }
 

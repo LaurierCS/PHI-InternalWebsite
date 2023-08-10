@@ -4,7 +4,13 @@
 
 #### Home of the internal website of the Laurier Computer Science PHI Society.
 
+</div>
+
+<div align="center">
+
 ## Getting Started
+
+</div>
 
 ### Prerequisites
 
@@ -30,8 +36,11 @@ npm run dev
 
 You can also run the client and server individually with `npm run client` and `npm run server` respectively.
 
+<div align="center">
 
 ## API
+
+</div>
 
 ### User
 Route: `/api/users/register`  
@@ -60,4 +69,3 @@ Request Type: `POST`
 Success: 200 status code  
 Update the job with the given job_id. The request body must be a JSON job document, including any fields to be updated.
 
-</div>

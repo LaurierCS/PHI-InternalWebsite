@@ -1,5 +1,8 @@
-# PHI Internal
-Home of the internal website of the Laurier Computer Science PHI Society.
+<div align="center">
+
+<img src="./assets/internal.png">
+
+#### Home of the internal website of the Laurier Computer Science PHI Society.
 
 ## Getting Started
 
@@ -56,3 +59,5 @@ Route: `/api/jobs/update/<job_id>`
 Request Type: `POST`  
 Success: 200 status code  
 Update the job with the given job_id. The request body must be a JSON job document, including any fields to be updated.
+
+</div>
